@@ -4,7 +4,6 @@ import Threadmill from "./Components/Threadmill";
 import ProductCarousel from "./Components/ProductCarousel";
 import FlavorBanner from "./Components/FlavorBanner";
 import VideoCards from "./Components/VideoCards";
-import Mission from "./Components/Mission";
 import Footer from "./Components/Footer";
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
       <ProductCarousel />
       <FlavorBanner />
       <VideoCards />
-      <Mission />
       <Footer />
     </div>
   );
