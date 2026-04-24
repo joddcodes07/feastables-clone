@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <div>
         <div className="bg-purple-900 text-center text-white font-bold py-2 text-sm">FREE SHIPPING ON ORDERS $50+</div>
-        <nav className="bg-[#6ec1d6] px-6 py-3 flex items-center justify-between">
+        <nav className="bg-[#72e2ff] px-6 py-3 flex items-center justify-between">
 
         <div>
             <img

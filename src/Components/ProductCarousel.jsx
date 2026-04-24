@@ -31,7 +31,8 @@ const productData = [
 
 const ProductCarousel = () => {
   return (
-    <section className="w-full bg-[#6fd7fa] py-16 px-6 overflow-hidden">
+    
+    <section className="w-full bg-[#72e2ff] py-16 px-6 overflow-hidden">
       <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center gap-10">
         
         {/* Left Side Text */}
