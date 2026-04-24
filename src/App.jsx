@@ -1,15 +1,17 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Products from "./components/Products";
-import Mission from "./components/Mission";
-import Footer from "./components/Footer";
+import Navbar from "./Components/Navbar";
+import Hero from "./Components/Hero";
+import Threadmill from "./Components/Threadmill";
+import ProductCarousel from "./Components/ProductCarousel";
+import Mission from "./Components/Mission";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
     <div className="font-sans">
       <Navbar />
       <Hero />
-      <Products />
+      <Threadmill />
+      <ProductCarousel />
       <Mission />
       <Footer />
     </div>
