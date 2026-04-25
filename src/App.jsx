@@ -8,6 +8,7 @@ import VideoCards from "./Components/VideoCards";
 import Footer from "./Components/Footer";
 import CollectionHero from "./Components/CollectionHero";
 import Cart from "./Components/Cart";
+import CartDrawer from "./Components/CartDrawer"; 
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
