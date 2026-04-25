@@ -24,7 +24,7 @@ const CartDrawer = ({ isOpen, onClose, onBrowse }) => {
             onClick={onClose}
             className="absolute top-4 right-4 text-2xl font-black w-8 h-8 border-[3px] border-black bg-white flex items-center justify-center hover:bg-gray-200"
           >
-            ×
+            × 
           </button>
           
           <div className="flex items-center gap-2 mt-2">
