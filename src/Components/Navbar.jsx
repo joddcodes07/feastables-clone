@@ -76,7 +76,7 @@ const Navbar = ({ setCurrentPage, onProductClick }) => {
       </div>
       
       <nav className="bg-[#72e2ff] px-6 py-3 flex items-center justify-between border-b-[3px] border-black">
-        <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); }}>
+        <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); if (onProductClick) onProductClick(null); }}>
           <img
             src="https://feastables.com/cdn/shop/files/Feastables_Rebrand_Non_Tilted.png?v=1715198993&width=360"
             alt="logo"
@@ -86,9 +86,9 @@ const Navbar = ({ setCurrentPage, onProductClick }) => {
 
         <div className="hidden md:flex gap-8 font-black italic text-lg uppercase text-black">
           <button onClick={() => setIsShopOpen(!isShopOpen)} className="hover:underline">SHOP</button>
-          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); }} className="hover:underline">OUR STORY</a>
-          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); }} className="hover:underline">ETHICAL SOURCING</a>
-          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("super-mario"); setIsShopOpen(false); }} className="hover:underline">SUPER MARIO GALAXY</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); if (onProductClick) onProductClick(null); }} className="hover:underline">OUR STORY</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); if (onProductClick) onProductClick(null); }} className="hover:underline">ETHICAL SOURCING</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("super-mario"); if (onProductClick) onProductClick(null); setIsShopOpen(false); }} className="hover:underline">SUPER MARIO GALAXY</a>
         </div>
 
         <div className="flex items-center gap-4 text-black">
