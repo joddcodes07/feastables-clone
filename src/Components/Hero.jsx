@@ -12,7 +12,7 @@ const Hero = () => {
         />
         
         {/* Overlay Content - Locked to the image container */}
-        <div className="absolute top-[48%] md:top-[54%] left-1/2 -translate-x-1/2 flex justify-center">
+        <div className="absolute top-[28%] md:top-[54%] left-1/2 -translate-x-1/2 flex justify-center">
           {/* BUY NOW Button */}
           <button 
             className="bg-[#e4252d] text-white px-8 py-3 md:px-12 md:py-4 rounded-xl font-black text-2xl md:text-3xl italic uppercase border-[3px] border-white hover:scale-105 hover:bg-[#ff2f38] active:scale-95 transition-all duration-200 shadow-[0_6px_0px_#000,0_10px_20px_rgba(0,0,0,0.5)]"
