@@ -31,7 +31,7 @@ export const CartProvider = ({ children }) => {
   const updateQuantity = (title, delta) => {
     setCartItems(prev => prev.map(item => {
       if (item.title === title) {
-        const newQuantity = Math.max(1, item.quantity + delta);
+        const newQuantity = Math.max(1, Number(item.quantity) + Number(delta));
         return { ...item, quantity: newQuantity };
       }
       return item;

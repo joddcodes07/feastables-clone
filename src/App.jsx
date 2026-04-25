@@ -8,13 +8,9 @@ import VideoCards from "./Components/VideoCards";
 import Footer from "./Components/Footer";
 import CollectionHero from "./Components/CollectionHero";
 import Cart from "./Components/Cart";
-<<<<<<< HEAD
 import CartDrawer from "./Components/CartDrawer";
 import { useCart } from "./CartContext";
-=======
-import CartDrawer from "./Components/CartDrawer"; 
 import EthicalSourcing from "./Components/EthicalSourcing";
->>>>>>> df76474 (linked the ethical sourcing in navbar)
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
