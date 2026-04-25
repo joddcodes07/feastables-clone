@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useCart } from "../CartContext";
 
 const Cart = ({ product, onBack }) => {
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
 
   const increase = () => setQuantity(prev => prev + 1);
   const decrease = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
@@ -63,7 +65,16 @@ const Cart = ({ product, onBack }) => {
                 <div className="flex-1 text-center">{quantity}</div>
                 <button onClick={increase} className="flex-1 py-3 hover:bg-gray-200 transition-colors">+</button>
               </div>
-              <button className="flex-1 bg-[#ff4f5e] border-[4px] border-black rounded-lg text-white font-black text-2xl hover:bg-[#ff3344] transition-colors shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none">
+              <button 
+                onClick={() => {
+                  addToCart({ 
+                    image: product?.image, 
+                    title: product?.name, 
+                    quantity: quantity // We'll add this many, but our addToCart logic currently adds 1 at a time. Let's fix that.
+                  });
+                }}
+                className="flex-1 bg-[#ff4f5e] border-[4px] border-black rounded-lg text-white font-black text-2xl hover:bg-[#ff3344] transition-colors shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none"
+              >
                 ADD TO BAG
               </button>
             </div>

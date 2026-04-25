@@ -1,3 +1,6 @@
+import React from "react";
+import { useCart } from "../CartContext";
+
 const productData = [
   {
     name: "Mario Galaxy Cocoa Crunch",
@@ -30,6 +33,7 @@ const productData = [
 ];
 
 const ProductCarousel = () => {
+  const { addToCart } = useCart();
   return (
     
     <section className="w-full bg-[#72e2ff] py-16 px-6 overflow-hidden">
@@ -65,7 +69,14 @@ const ProductCarousel = () => {
                 <p className="text-lg font-bold mb-6">
                   {product.price}
                 </p>
-                <button className={`w-full ${product.buttonColor} text-white py-3 rounded-xl font-black text-xl uppercase hover:scale-105 active:scale-95 transition-transform`}>
+                <button 
+                  onClick={() => {
+                    if (product.buttonText === "ADD TO BAG") {
+                      addToCart({ image: product.img, title: product.name });
+                    }
+                  }}
+                  className={`w-full ${product.buttonColor} text-white py-3 rounded-xl font-black text-xl uppercase hover:scale-105 active:scale-95 transition-transform`}
+                >
                   {product.buttonText}
                 </button>
               </div>

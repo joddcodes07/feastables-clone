@@ -8,11 +8,13 @@ import VideoCards from "./Components/VideoCards";
 import Footer from "./Components/Footer";
 import CollectionHero from "./Components/CollectionHero";
 import Cart from "./Components/Cart";
-import CartDrawer from "./Components/CartDrawer"; 
+import CartDrawer from "./Components/CartDrawer";
+import { useCart } from "./CartContext";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { isCartOpen, setIsCartOpen } = useCart();
 
   return (
     <div className="font-sans bg-[#fdf5e6] min-h-screen flex flex-col">
@@ -37,6 +39,14 @@ function App() {
         )}
       </div>
       <Footer />
+      <CartDrawer 
+        isOpen={isCartOpen} 
+        onClose={() => setIsCartOpen(false)} 
+        onBrowse={() => {
+          setIsCartOpen(false);
+          setCurrentPage("super-mario");
+        }}
+      />
     </div>
   );
 }

@@ -1,6 +1,9 @@
 import React from 'react';
+import { useCart } from '../CartContext';
 
 const ProductCard = ({ image, title, subtitle }) => {
+  const { addToCart } = useCart();
+  
   return (
     <div className="border-[4px] border-black rounded-2xl overflow-hidden flex flex-col bg-[#eee6d8]">
       <div className="bg-[#72e2ff] h-72 relative flex items-center justify-center p-8 overflow-hidden">
@@ -20,7 +23,10 @@ const ProductCard = ({ image, title, subtitle }) => {
           <p className="font-bold text-sm uppercase text-black mt-1">{subtitle}</p>
         </div>
         
-        <button className="w-full bg-[#d4ff00] border-[4px] border-black py-3 font-black italic text-xl uppercase rounded-xl hover:bg-[#bce600] transition-colors">
+        <button 
+          onClick={() => addToCart({ image, title, subtitle })}
+          className="w-full bg-[#d4ff00] border-[4px] border-black py-3 font-black italic text-xl uppercase rounded-xl hover:bg-[#bce600] transition-colors"
+        >
           ADD TO BAG
         </button>
       </div>
