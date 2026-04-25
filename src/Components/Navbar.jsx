@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useCart } from "../CartContext";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = ({ setCurrentPage, onProductClick }) => {
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("CHOCOLATE");
   const { isCartOpen, setIsCartOpen, cartCount } = useCart();
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
       const handleClickOutside = (event) => {
@@ -67,6 +69,12 @@ const Navbar = ({ setCurrentPage, onProductClick }) => {
     activeCategory === "BUNDLES" ? bundles :
     activeCategory === "CHOCOLATE" ? chocolates : [];
 
+  const handleNavClick = (page) => {
+    if (setCurrentPage) setCurrentPage(page);
+    if (onProductClick) onProductClick(null);
+    navigate('/');
+  };
+
   return (
     <div className="relative" ref={dropdownRef}>
       <div className="bg-[#5a3182] text-white font-bold py-2 text-sm flex justify-center items-center relative">
@@ -75,7 +83,7 @@ const Navbar = ({ setCurrentPage, onProductClick }) => {
       </div>
       
       <nav className="bg-[#72e2ff] px-6 py-3 flex items-center justify-between border-b-[3px] border-black">
-        <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); if (onProductClick) onProductClick(null); }}>
+        <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick("home"); }}>
           <img
             src="https://feastables.com/cdn/shop/files/Feastables_Rebrand_Non_Tilted.png?v=1715198993&width=360"
             alt="logo"
@@ -85,9 +93,9 @@ const Navbar = ({ setCurrentPage, onProductClick }) => {
 
         <div className="hidden md:flex gap-8 font-black italic text-lg uppercase text-black">
           <button onClick={() => setIsShopOpen(!isShopOpen)} className="hover:underline">SHOP</button>
-          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); if (onProductClick) onProductClick(null); }} className="hover:underline">OUR STORY</a>
-          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("ethical-sourcing"); if (onProductClick) onProductClick(null); }} className="hover:underline">ETHICAL SOURCING</a>
-          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("super-mario"); if (onProductClick) onProductClick(null); setIsShopOpen(false); }} className="hover:underline">SUPER MARIO GALAXY</a>
+          <Link to="/pages/our-cocoa-story" className="hover:underline">OUR STORY</Link>
+          <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick("ethical-sourcing"); }} className="hover:underline">ETHICAL SOURCING</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick("super-mario"); setIsShopOpen(false); }} className="hover:underline">SUPER MARIO GALAXY</a>
         </div>
 
         <div className="flex items-center gap-4 text-black">
@@ -122,7 +130,7 @@ const Navbar = ({ setCurrentPage, onProductClick }) => {
             <div className="flex-1 p-8 bg-[#f2eadd]">
               <div className="grid grid-cols-5 gap-6">
                 {activeProducts.slice(0, 5).map((prod, idx) => (
-                  <div key={idx} onClick={() => { if (onProductClick) onProductClick(prod); setIsShopOpen(false); }} className="border-[4px] border-black rounded-xl overflow-hidden flex flex-col h-64 bg-[#f2eadd] cursor-pointer hover:scale-105 transition-transform duration-200">
+                  <div key={idx} onClick={() => { if (onProductClick) onProductClick(prod); setIsShopOpen(false); navigate('/'); }} className="border-[4px] border-black rounded-xl overflow-hidden flex flex-col h-64 bg-[#f2eadd] cursor-pointer hover:scale-105 transition-transform duration-200">
                     <div className="bg-[#72e2ff] h-3/5 flex items-center justify-center p-4 relative overflow-hidden">
                       <div className="absolute bottom-[-15px] w-[120%] h-12 bg-[#f2eadd] rounded-t-[50%] border-t-[4px] border-black z-0"></div>
                       <img src={prod.image} alt={prod.name} className="object-contain h-24 w-full relative z-10" />
@@ -136,7 +144,7 @@ const Navbar = ({ setCurrentPage, onProductClick }) => {
               {activeProducts.length > 5 && (
                 <div className="grid grid-cols-4 gap-6 mt-8 justify-center mx-auto w-4/5">
                   {activeProducts.slice(5).map((prod, idx) => (
-                    <div key={idx} onClick={() => { if (onProductClick) onProductClick(prod); setIsShopOpen(false); }} className="border-[4px] border-black rounded-xl overflow-hidden flex flex-col h-64 bg-[#f2eadd] cursor-pointer hover:scale-105 transition-transform duration-200">
+                    <div key={idx} onClick={() => { if (onProductClick) onProductClick(prod); setIsShopOpen(false); navigate('/'); }} className="border-[4px] border-black rounded-xl overflow-hidden flex flex-col h-64 bg-[#f2eadd] cursor-pointer hover:scale-105 transition-transform duration-200">
                       <div className="bg-[#72e2ff] h-3/5 flex items-center justify-center p-4 relative overflow-hidden">
                         <div className="absolute bottom-[-15px] w-[120%] h-12 bg-[#f2eadd] rounded-t-[50%] border-t-[4px] border-black z-0"></div>
                         <img src={prod.image} alt={prod.name} className="object-contain h-24 w-full relative z-10" />
