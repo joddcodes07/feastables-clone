@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const Navbar = () => {
+const Navbar = ({ setCurrentPage }) => {
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("CHOCOLATE");
   const dropdownRef = useRef(null);
@@ -73,7 +73,7 @@ const Navbar = () => {
       </div>
       
       <nav className="bg-[#72e2ff] px-6 py-3 flex items-center justify-between border-b-[3px] border-black">
-        <a href="/">
+        <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); }}>
           <img
             src="https://feastables.com/cdn/shop/files/Feastables_Rebrand_Non_Tilted.png?v=1715198993&width=360"
             alt="logo"
@@ -83,9 +83,9 @@ const Navbar = () => {
 
         <div className="hidden md:flex gap-8 font-black italic text-lg uppercase text-black">
           <button onClick={() => setIsShopOpen(!isShopOpen)} className="hover:underline">SHOP</button>
-          <a href="#" className="hover:underline">OUR STORY</a>
-          <a href="#" className="hover:underline">ETHICAL SOURCING</a>
-          <a href="#" className="hover:underline">SUPER MARIO GALAXY</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); }} className="hover:underline">OUR STORY</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); }} className="hover:underline">ETHICAL SOURCING</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("super-mario"); setIsShopOpen(false); }} className="hover:underline">SUPER MARIO GALAXY</a>
         </div>
 
         <div className="flex items-center gap-4 text-black">
