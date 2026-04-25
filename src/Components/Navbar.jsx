@@ -86,7 +86,7 @@ const Navbar = ({ setCurrentPage, onProductClick }) => {
         <div className="hidden md:flex gap-8 font-black italic text-lg uppercase text-black">
           <button onClick={() => setIsShopOpen(!isShopOpen)} className="hover:underline">SHOP</button>
           <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); if (onProductClick) onProductClick(null); }} className="hover:underline">OUR STORY</a>
-          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("home"); if (onProductClick) onProductClick(null); }} className="hover:underline">ETHICAL SOURCING</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("ethical-sourcing"); if (onProductClick) onProductClick(null); }} className="hover:underline">ETHICAL SOURCING</a>
           <a href="#" onClick={(e) => { e.preventDefault(); if (setCurrentPage) setCurrentPage("super-mario"); if (onProductClick) onProductClick(null); setIsShopOpen(false); }} className="hover:underline">SUPER MARIO GALAXY</a>
         </div>
 
