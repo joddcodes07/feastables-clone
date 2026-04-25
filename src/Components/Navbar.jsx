@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const Navbar = ({ setCurrentPage }) => {
+const Navbar = ({ setCurrentPage, onProductClick }) => {
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("CHOCOLATE");
   const dropdownRef = useRef(null);
@@ -117,15 +117,15 @@ const Navbar = ({ setCurrentPage }) => {
             </div>
 
             {/* Main Area */}
-            <div className="flex-1 p-8">
+            <div className="flex-1 p-8 bg-[#f2eadd]">
               <div className="grid grid-cols-5 gap-6">
                 {activeProducts.slice(0, 5).map((prod, idx) => (
-                  <div key={idx} className="border-[4px] border-black rounded-xl overflow-hidden flex flex-col h-64 bg-[#f2eadd]">
-                    <div className="bg-[#72e2ff] h-3/5 flex items-center justify-center relative overflow-hidden">
-                      <div className="absolute -bottom-4 w-[120%] h-12 bg-[#f2eadd] rounded-t-full border-t-[4px] border-black"></div>
-                      <img src={prod.image} alt={prod.name} className="object-contain h-24 relative z-10" />
+                  <div key={idx} onClick={() => { if (onProductClick) onProductClick(prod); setIsShopOpen(false); }} className="border-[4px] border-black rounded-xl overflow-hidden flex flex-col h-64 bg-[#f2eadd] cursor-pointer hover:scale-105 transition-transform duration-200">
+                    <div className="bg-[#72e2ff] h-3/5 flex items-center justify-center p-4 relative overflow-hidden">
+                      <div className="absolute bottom-[-15px] w-[120%] h-12 bg-[#f2eadd] rounded-t-[50%] border-t-[4px] border-black z-0"></div>
+                      <img src={prod.image} alt={prod.name} className="object-contain h-24 w-full relative z-10" />
                     </div>
-                    <div className="flex-1 p-3 flex items-center justify-center text-center font-black text-sm">
+                    <div className="bg-[#f2eadd] flex-1 p-3 flex items-center justify-center text-center font-black text-sm leading-tight z-10">
                       {prod.name}
                     </div>
                   </div>
@@ -134,12 +134,12 @@ const Navbar = ({ setCurrentPage }) => {
               {activeProducts.length > 5 && (
                 <div className="grid grid-cols-4 gap-6 mt-8 justify-center mx-auto w-4/5">
                   {activeProducts.slice(5).map((prod, idx) => (
-                    <div key={idx} className="border-[4px] border-black rounded-xl overflow-hidden flex flex-col h-64 bg-[#f2eadd]">
-                      <div className="bg-[#72e2ff] h-3/5 flex items-center justify-center relative overflow-hidden">
-                        <div className="absolute -bottom-4 w-[120%] h-12 bg-[#f2eadd] rounded-t-full border-t-[4px] border-black"></div>
-                        <img src={prod.image} alt={prod.name} className="object-contain h-24 relative z-10" />
+                    <div key={idx} onClick={() => { if (onProductClick) onProductClick(prod); setIsShopOpen(false); }} className="border-[4px] border-black rounded-xl overflow-hidden flex flex-col h-64 bg-[#f2eadd] cursor-pointer hover:scale-105 transition-transform duration-200">
+                      <div className="bg-[#72e2ff] h-3/5 flex items-center justify-center p-4 relative overflow-hidden">
+                        <div className="absolute bottom-[-15px] w-[120%] h-12 bg-[#f2eadd] rounded-t-[50%] border-t-[4px] border-black z-0"></div>
+                        <img src={prod.image} alt={prod.name} className="object-contain h-24 w-full relative z-10" />
                       </div>
-                      <div className="flex-1 p-3 flex items-center justify-center text-center font-black text-sm">
+                      <div className="bg-[#f2eadd] flex-1 p-3 flex items-center justify-center text-center font-black text-sm leading-tight z-10">
                         {prod.name}
                       </div>
                     </div>

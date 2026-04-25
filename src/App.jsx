@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import Threadmill from "./Components/Threadmill";
@@ -7,16 +7,23 @@ import FlavorBanner from "./Components/FlavorBanner";
 import VideoCards from "./Components/VideoCards";
 import Footer from "./Components/Footer";
 import CollectionHero from "./Components/CollectionHero";
+import Cart from "./Components/Cart";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   return (
     <div className="font-sans bg-[#fdf5e6] min-h-screen flex flex-col">
-      <Navbar setCurrentPage={setCurrentPage} />
+      <Navbar 
+        setCurrentPage={setCurrentPage} 
+        onProductClick={(product) => setSelectedProduct(product)} 
+      />
       
       <div className="flex-grow">
-        {currentPage === "super-mario" ? (
+        {selectedProduct ? (
+          <Cart product={selectedProduct} onBack={() => setSelectedProduct(null)} />
+        ) : currentPage === "super-mario" ? (
           <CollectionHero />
         ) : (
           <>
@@ -28,7 +35,6 @@ function App() {
           </>
         )}
       </div>
-
       <Footer />
     </div>
   );
